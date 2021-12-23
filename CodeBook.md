@@ -16,15 +16,22 @@ Dataset Original Location:  https://archive-beta.ics.uci.edu/ml/datasets/human+a
 The dataset was downloaded and placed in the folder:  *UCI HAR Dataset*
 
 **Assigning Variable Names to DataFrames in the dataset.**
-- features <- read.table("UCI HAR Dataset/features.txt", col.names = c("n","functions"))
-*Description*
-- activities <- read.table("UCI HAR Dataset/activity_labels.txt", col.names = c("code", "activity"))
-- subject_test <- read.table("UCI HAR Dataset/test/subject_test.txt", col.names = "subject")
-- x_test <- read.table("UCI HAR Dataset/test/X_test.txt", col.names = features$functions)
-- y_test <- read.table("UCI HAR Dataset/test/y_test.txt", col.names = "code")
-- subject_train <- read.table("UCI HAR Dataset/train/subject_train.txt", col.names = "subject")
-- x_train <- read.table("UCI HAR Dataset/train/X_train.txt", col.names = features$functions)
-- y_train <- read.table("UCI HAR Dataset/train/y_train.txt", col.names = "code")
+- features <- read.table("UCI HAR Dataset/features.txt", col.names = c("n","functions"))<br/>
+*Description: 561 Rows-2 Columns/The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ.*
+- activities <- read.table("UCI HAR Dataset/activity_labels.txt", col.names = c("code", "activity"))<br/>
+*Description: 6 Rows-2 Columns/List of activities performed when the corresponding measurements were taken and its codes (labels)*
+- subject_test <- read.table("UCI HAR Dataset/test/subject_test.txt", col.names = "subject") <br/>
+*Description: 2,947 Rows-1 Column/Contains test data of 9/30 volunteer test subjects being observed*
+- x_test <- read.table("UCI HAR Dataset/test/X_test.txt", col.names = features$functions) <br/>
+*Description: 2,947 Rows-561 Columns/Contains recorded features test data*
+- y_test <- read.table("UCI HAR Dataset/test/y_test.txt", col.names = "code") <br/>
+*Description: 2,947 Rows-1 Columns/Contains test data of activities’code labels*
+- subject_train <- read.table("UCI HAR Dataset/train/subject_train.txt", col.names = "subject") <br/>
+*Description: 7,352 Rows-1 Column/Contains train data of 21/30 volunteer subjects being observed*
+- x_train <- read.table("UCI HAR Dataset/train/X_train.txt", col.names = features$functions) <br/>
+*Description: *
+- y_train <- read.table("UCI HAR Dataset/train/y_train.txt", col.names = "code") <br/>
+*Description: * 
 
  **[X] Step 1 - Merge the *training* and *test* datasets into one unified dataset.**
 - X <- rbind(x_train, x_test)
@@ -34,4 +41,8 @@ The dataset was downloaded and placed in the folder:  *UCI HAR Dataset*
 
  **[X] Step 2 - Extract only the measurements on the mean and standard deviation for each measurement.**
  
+ 
+ **[X] Step 3 - Assign descriptive activity names to name the activities in the data set.**
+ 
+ **[X] Step 4 - Label the data set with descriptive variable names.**
  
