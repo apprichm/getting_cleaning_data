@@ -29,20 +29,31 @@ The dataset was downloaded and placed in the folder:  *UCI HAR Dataset*
 - subject_train <- read.table("UCI HAR Dataset/train/subject_train.txt", col.names = "subject") <br/>
 *Description: 7,352 Rows-1 Column/Contains train data of 21/30 volunteer subjects being observed*
 - x_train <- read.table("UCI HAR Dataset/train/X_train.txt", col.names = features$functions) <br/>
-*Description: *
+*Description: 7,352 Rows-561 Columns/Contains recorded features train data*
 - y_train <- read.table("UCI HAR Dataset/train/y_train.txt", col.names = "code") <br/>
-*Description: * 
+*Description: 7,352 Rows-1 Columns/Contains train data of activities’code labels* 
 
  **[X] Step 1 - Merge the *training* and *test* datasets into one unified dataset.**
-- X <- rbind(x_train, x_test)
-- Y <- rbind(y_train, y_test)
-- Subject <- rbind(subject_train, subject_test)
-- Merged_Data <- cbind(Subject, Y, X)
+- **X** (10,299 Rows/561 Columns) created by merging x_train and x_test using **rbind()** function
+- **Y** (10,299 Rows/1 Column) created by merging y_train and y_test using **rbind()** function
+- **Subject** (10,299 Rows/1 Column) created by merging subject_train and subject_test using **rbind()** function
+- **Merged_Data** (10,299 Rows/563 Columns) is created by merging Subject, Y and X using **cbind()** function
 
- **[X] Step 2 - Extract only the measurements on the mean and standard deviation for each measurement.**
+ **[X] Step 2 - Extract only the measurements on the mean and standard deviation for each measurement.** <br/>
+ **TidyData** (10,299 Rows/88 Columns) created by subsetting **Merged_Data**, selecting only columns: subject, code and the measurements on the mean (x-bar) and standard deviation (std) for each measurement
  
- 
- **[X] Step 3 - Assign descriptive activity names to name the activities in the data set.**
+ **[X] Step 3 - Assign descriptive activity names to name the activities in the data set.** <br/>
+ Entire numbers in **code** column of the **TidyData** DataFrame are replaced with corresponding **activity** taken from second column of the activities variable
  
  **[X] Step 4 - Label the data set with descriptive variable names.**
- 
+- *code* column in **TidyData** renamed *activities*
+- All *Acc* in column’s name replaced by *Accelerometer*
+- All *Gyro* in column’s name replaced by *Gyroscope*
+- All *BodyBody* in column’s name replaced by *Body*
+- All *Mag* in column’s name replaced by *Magnitude*
+- All start with character *f* in column’s name replaced by *Frequency*
+- All start with character *t* in column’s name replaced by *Time*
+
+ **[X] Step 5 - From the data set in step 4, create a second, independent tidy data set with the average of each variable for each activity and subject.**<br/>
+**FinalData** (180 Rows/88 Columns) Created by sumarizing **TidyData** taking the means (x-bar) of each variable for each activity and subject, grouped by subject and activity.
+Export **FinalData** into the **FinalData.txt** file.
