@@ -55,5 +55,5 @@ The dataset was downloaded and placed in the folder:  *UCI HAR Dataset*
 - All start with character *t* in column’s name replaced by *Time*
 
  **[X] Step 5 - From the data set in step 4, create a second, independent tidy data set with the average of each variable for each activity and subject.**<br/>
-**FinalData** (180 Rows/88 Columns) Created by sumarizing **TidyData** taking the means (x-bar) of each variable for each activity and subject, grouped by subject and activity.
+**FinalData** (180 Rows/88 Columns) Created by summarizing **TidyData** taking the means (x-bar) of each variable for each activity and subject, grouped by subject and activity.
 Export **FinalData** into the **FinalData.txt** file.
